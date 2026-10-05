@@ -1,0 +1,257 @@
+{
+  "version": 1,
+  "model": "offline-normalized-cache-subset",
+  "timeline": [
+    {
+      "index": 0,
+      "at_ms": 0,
+      "op": "store_rrset",
+      "name": "app.example.",
+      "type": "CNAME",
+      "decision": "stored",
+      "evidence": {
+        "category": "positive",
+        "key": [
+          "app.example.",
+          "CNAME",
+          "IN"
+        ],
+        "inserted_ms": 0,
+        "expires_ms": 10000,
+        "remaining_ms": 10000,
+        "records": [
+          "host.example."
+        ]
+      },
+      "removed_keys": [],
+      "explanation": "Inserted under the documented model transition policy."
+    },
+    {
+      "index": 1,
+      "at_ms": 0,
+      "op": "store_negative",
+      "name": "host.example.",
+      "type": "AAAA",
+      "decision": "stored",
+      "evidence": {
+        "category": "NODATA",
+        "key": [
+          "host.example.",
+          "AAAA",
+          "IN"
+        ],
+        "inserted_ms": 0,
+        "expires_ms": 10000,
+        "remaining_ms": 10000,
+        "records": []
+      },
+      "removed_keys": [],
+      "explanation": "Inserted under the documented model transition policy."
+    },
+    {
+      "index": 2,
+      "at_ms": 0,
+      "op": "store_failure",
+      "name": "host.example.",
+      "type": "A",
+      "decision": "stored",
+      "evidence": {
+        "category": "failure",
+        "key": [
+          "host.example.",
+          "A",
+          "IN"
+        ],
+        "inserted_ms": 0,
+        "expires_ms": 5000,
+        "remaining_ms": 5000,
+        "records": []
+      },
+      "removed_keys": [],
+      "explanation": "Inserted under the documented model transition policy."
+    },
+    {
+      "index": 3,
+      "at_ms": 1000,
+      "op": "query",
+      "name": "app.example.",
+      "type": "A",
+      "decision": "suppressed_failure",
+      "terminal": "host.example.",
+      "hops": [
+        {
+          "category": "positive",
+          "key": [
+            "app.example.",
+            "CNAME",
+            "IN"
+          ],
+          "inserted_ms": 0,
+          "expires_ms": 10000,
+          "remaining_ms": 9000,
+          "records": [
+            "host.example."
+          ]
+        }
+      ],
+      "explanation": "Completed failure cached; existence remains unknown.",
+      "evidence": {
+        "category": "failure",
+        "key": [
+          "host.example.",
+          "A",
+          "IN"
+        ],
+        "inserted_ms": 0,
+        "expires_ms": 5000,
+        "remaining_ms": 4000,
+        "records": []
+      }
+    },
+    {
+      "index": 4,
+      "at_ms": 2000,
+      "op": "store_rrset",
+      "name": "host.example.",
+      "type": "A",
+      "decision": "stored",
+      "evidence": {
+        "category": "positive",
+        "key": [
+          "host.example.",
+          "A",
+          "IN"
+        ],
+        "inserted_ms": 2000,
+        "expires_ms": 4000,
+        "remaining_ms": 2000,
+        "records": [
+          "192.0.2.10"
+        ]
+      },
+      "removed_keys": [
+        [
+          "failure",
+          "host.example.",
+          "A"
+        ]
+      ],
+      "explanation": "Inserted under the documented model transition policy."
+    },
+    {
+      "index": 5,
+      "at_ms": 3999,
+      "op": "query",
+      "name": "app.example.",
+      "type": "A",
+      "decision": "positive",
+      "terminal": "host.example.",
+      "hops": [
+        {
+          "category": "positive",
+          "key": [
+            "app.example.",
+            "CNAME",
+            "IN"
+          ],
+          "inserted_ms": 0,
+          "expires_ms": 10000,
+          "remaining_ms": 6001,
+          "records": [
+            "host.example."
+          ]
+        }
+      ],
+      "explanation": "Reusable cached data; no connection is inferred.",
+      "evidence": {
+        "category": "positive",
+        "key": [
+          "host.example.",
+          "A",
+          "IN"
+        ],
+        "inserted_ms": 2000,
+        "expires_ms": 4000,
+        "remaining_ms": 1,
+        "records": [
+          "192.0.2.10"
+        ]
+      }
+    },
+    {
+      "index": 6,
+      "at_ms": 3999,
+      "op": "query",
+      "name": "app.example.",
+      "type": "AAAA",
+      "decision": "NODATA",
+      "terminal": "host.example.",
+      "hops": [
+        {
+          "category": "positive",
+          "key": [
+            "app.example.",
+            "CNAME",
+            "IN"
+          ],
+          "inserted_ms": 0,
+          "expires_ms": 10000,
+          "remaining_ms": 6001,
+          "records": [
+            "host.example."
+          ]
+        }
+      ],
+      "explanation": "Cached denial of this terminal type only.",
+      "evidence": {
+        "category": "NODATA",
+        "key": [
+          "host.example.",
+          "AAAA",
+          "IN"
+        ],
+        "inserted_ms": 0,
+        "expires_ms": 10000,
+        "remaining_ms": 6001,
+        "records": []
+      }
+    },
+    {
+      "index": 7,
+      "at_ms": 4000,
+      "op": "query",
+      "name": "app.example.",
+      "type": "A",
+      "decision": "needs_information",
+      "terminal": "host.example.",
+      "hops": [
+        {
+          "category": "positive",
+          "key": [
+            "app.example.",
+            "CNAME",
+            "IN"
+          ],
+          "inserted_ms": 0,
+          "expires_ms": 10000,
+          "remaining_ms": 6000,
+          "records": [
+            "host.example."
+          ]
+        }
+      ],
+      "explanation": "No reusable terminal data; existence remains unknown."
+    },
+    {
+      "index": 8,
+      "at_ms": 10000,
+      "op": "query",
+      "name": "app.example.",
+      "type": "CNAME",
+      "decision": "needs_information",
+      "terminal": "app.example.",
+      "hops": [],
+      "explanation": "No reusable terminal data; existence remains unknown."
+    }
+  ]
+}

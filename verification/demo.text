@@ -1,0 +1,35 @@
+Offline DNS cache teaching model (IN); no live resolution.
+0ms store_rrset app.example. CNAME: stored
+  key=['app.example.', 'CNAME', 'IN'] expires=10000ms remaining=10000ms
+  Inserted under the documented model transition policy.
+0ms store_negative host.example. AAAA: stored
+  key=['host.example.', 'AAAA', 'IN'] expires=10000ms remaining=10000ms
+  Inserted under the documented model transition policy.
+0ms store_failure host.example. A: stored
+  key=['host.example.', 'A', 'IN'] expires=5000ms remaining=5000ms
+  Inserted under the documented model transition policy.
+1000ms query app.example. A: suppressed_failure
+  alias app.example. -> host.example. remaining=9000ms
+  terminal=host.example.
+  key=['host.example.', 'A', 'IN'] expires=5000ms remaining=4000ms
+  Completed failure cached; existence remains unknown.
+2000ms store_rrset host.example. A: stored
+  key=['host.example.', 'A', 'IN'] expires=4000ms remaining=2000ms
+  Inserted under the documented model transition policy.
+3999ms query app.example. A: positive
+  alias app.example. -> host.example. remaining=6001ms
+  terminal=host.example.
+  key=['host.example.', 'A', 'IN'] expires=4000ms remaining=1ms
+  Reusable cached data; no connection is inferred.
+3999ms query app.example. AAAA: NODATA
+  alias app.example. -> host.example. remaining=6001ms
+  terminal=host.example.
+  key=['host.example.', 'AAAA', 'IN'] expires=10000ms remaining=6001ms
+  Cached denial of this terminal type only.
+4000ms query app.example. A: needs_information
+  alias app.example. -> host.example. remaining=6000ms
+  terminal=host.example.
+  No reusable terminal data; existence remains unknown.
+10000ms query app.example. CNAME: needs_information
+  terminal=app.example.
+  No reusable terminal data; existence remains unknown.

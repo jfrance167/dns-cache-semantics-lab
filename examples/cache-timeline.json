@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "events": [
+    {"at_ms": 0, "op": "store_rrset", "name": "app.example.", "type": "CNAME", "ttl_s": 10, "records": ["host.example."]},
+    {"at_ms": 0, "op": "store_negative", "name": "host.example.", "type": "AAAA", "kind": "NODATA", "soa": {"owner": "example.", "ttl_s": 30, "minimum_s": 10}},
+    {"at_ms": 0, "op": "store_failure", "name": "host.example.", "type": "A", "duration_s": 5},
+    {"at_ms": 1000, "op": "query", "name": "app.example.", "type": "A"},
+    {"at_ms": 2000, "op": "store_rrset", "name": "host.example.", "type": "A", "ttl_s": 2, "records": ["192.0.2.10"]},
+    {"at_ms": 3999, "op": "query", "name": "app.example.", "type": "A"},
+    {"at_ms": 3999, "op": "query", "name": "app.example.", "type": "AAAA"},
+    {"at_ms": 4000, "op": "query", "name": "app.example.", "type": "A"},
+    {"at_ms": 10000, "op": "query", "name": "app.example.", "type": "CNAME"}
+  ]
+}

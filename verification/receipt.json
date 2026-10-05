@@ -1,0 +1,26 @@
+{
+  "mutation_expiry": {
+    "exit_code": 1,
+    "detected": true
+  },
+  "mutation_cross-type": {
+    "exit_code": 1,
+    "detected": true
+  },
+  "normal": {
+    "exit_code": 0
+  },
+  "optimized": {
+    "exit_code": 0
+  },
+  "bandit": {
+    "exit_code": 0,
+    "findings": 0
+  },
+  "compileall": {
+    "exit_code": 0
+  },
+  "python": "3.13.7",
+  "source_sha256": "f4d1f56b7688e748c5495a39f134e4515414ffa9d807c4796c56b76479c9b996",
+  "source_restored": true
+}
