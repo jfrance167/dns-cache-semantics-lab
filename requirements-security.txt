@@ -3,7 +3,7 @@
 # Artifact hashes remain unverified: official PyPI TLS requests failed locally.
 bandit==1.9.4
 colorama==0.4.6
-PyYAML==6.0.3
+PyYAML==6.0.4
 rich==15.0.0
 stevedore==5.9.1
 markdown-it-py==4.2.0
